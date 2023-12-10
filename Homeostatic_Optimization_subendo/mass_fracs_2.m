@@ -1,0 +1,32 @@
+function [e, c, m] = mass_fracs_2(D)
+
+global A LA IA SA
+
+if D < 2*2.5e-5
+    x = SA;
+elseif D >= 2*2.5e-5 && D < 2*5.0e-5
+    x = IA;
+elseif D >= 2*5.0e-5 && D < 2*9.5e-5
+    x = LA;
+elseif D >= 2*9.5e-5
+    x = A;
+else
+    disp('error in parameter assignment');
+end
+
+% the mass fractions from the parameter estimation are the total mass
+% fractions, meaning they inculde the axial collagen fibers. However, in
+% the optimization, the axial fibers are not included and the mass fraction
+% there is the mass of collagen minus the axial fibers. We correct that
+% here so there is no discrepancy. 
+
+% axial fiber mass fraction (.1 of total collagen in this work)
+
+c_axial = x.c*0.1;
+
+e = x.e;
+m = x.m;
+c = x.c;
+
+
+end

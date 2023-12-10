@@ -1,0 +1,6 @@
+%% Pin
+100
+%% Pout
+55
+%% Pintramyocardial
+47.2382
